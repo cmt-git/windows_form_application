@@ -1,0 +1,56 @@
+#1 Install docker, install images of postgres and dpage/pgadmin4 and run :
+
+postgres:
+docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=admin -e POSTGRES_USER=admin -e POSTGRES_DB=sample_db -d postgres
+
+pgadmin4:
+ docker run --name pgadmin -p 5050:5050 -e PGADMIN_DEFAULT_EMAIL=root@root.com -e PGADMIN_DEFAULT_PASSWORD=root -e PGADMIN_LISTEN_PORT=5050 -d dpage/pgadmin4
+
+go to localhost:5050 -> login: username: root@root.com, password: root -> add server -> host: host.docker.internal, port: 5432, username: admin, password: admin
+go to sample_db -> right click -> query tool -> enter #2 -> enter #3 -> run app
+
+
+#2 Create questions table: 
+CREATE TABLE questions (
+    id SERIAL PRIMARY KEY,
+    question VARCHAR(1000)
+);
+
+#3 Insert questions: 
+INSERT INTO Questions (question)
+VALUES
+('What is the default access modifier for members of a class in C#? (-) [Correct] private (-) public (-) protected (-) internal'),
+('Which operator increments a variable by 1 in C#? (-) [Correct] ++ (-) +=1 (-) +1 (-) =+'),
+('What does the "using" keyword do in C#? (-) [Correct] Resource disposal (-) Declare scope (-) Import class (-) Declare variable'),
+('How to declare a variable in C#? (-) [Correct] datatype variableName; (-) var variableName; (-) variableName = value; (-) var datatype = value;'),
+('What does the "async" keyword indicate in C#? (-) [Correct] Method can be awaited (-) Method is a lambda (-) Method is an event handler (-) Method is static'),
+('How to define an array in C#? (-) [Correct] datatype[] arrayName; (-) array arrayName; (-) var arrayName; (-) arrayName = new datatype[];'),
+('What is the purpose of the "using" directive in C#? (-) [Correct] Import namespaces (-) Define variable scope (-) Declare constant value (-) Declare class'),
+('Which statement exits a loop prematurely in C#? (-) [Correct] break; (-) continue; (-) return; (-) exit;'),
+('Difference between "==" and "<="? (-) [Correct] Comparison (-) Assignment (-) Logical (-) Increment'),
+('What is the main purpose of an interface in C#? (-) [Correct] Contract definition (-) Data storage (-) Exception handling (-) Code optimization'),
+('How to create a new instance of a class in C#? (-) [Correct] ClassName objectName = new ClassName(); (-) ClassName objectName = ClassName(); (-) new ClassName objectName = ClassName(); (-) ClassName objectName = new ClassName;'),
+('What does the "sealed" keyword indicate in C#? (-) [Correct] Class cannot be inherited (-) Class is abstract (-) Class is static (-) Class is generic'),
+('How to handle exceptions in C#? (-) [Correct] try-catch-finally block (-) if-else statement (-) for loop (-) switch statement'),
+('What is the purpose of the "static" keyword in C#? (-) [Correct] Defines a member that belongs to the class itself (-) Defines a constant value (-) Defines a variable with static storage (-) Defines an interface'),
+('How to iterate over elements in a collection in C#? (-) [Correct] foreach loop (-) for loop (-) while loop (-) do-while loop'),
+('What does the "override" keyword indicate in C#? (-) [Correct] Method is overridden from a base class (-) Method is static (-) Method is abstract (-) Method is virtual'),
+('What is the purpose of the "finally" block in a try-catch-finally statement in C#? (-) [Correct] Executes code regardless of an exception (-) Handles exceptions (-) Closes file connections (-) Exits the program'),
+('How to check if two strings are equal in C#? (-) [Correct] string1.Equals(string2) (-) string1 == string2 (-) string1.CompareTo(string2) (-) string1.Contains(string2)'),
+('What is the purpose of the "this" keyword in C#? (-) [Correct] Refers to the current instance of a class (-) Refers to the base class (-) Refers to a static member (-) Refers to a generic type'),
+('How to convert a string to an integer in C#? (-) [Correct] int.Parse(stringValue) (-) string.ToInt32() (-) Convert.ToInt32(stringValue) (-) intValue(stringValue)'),
+('What is the purpose of the "namespace" keyword in C#? (-) [Correct] Organizes code into logical groups (-) Declares a class (-) Defines an interface (-) Specifies access modifiers'),
+('How to concatenate two strings in C#? (-) [Correct] string.Concat(string1, string2) (-) string1 + string2 (-) string1.Concat(string2) (-) string1.Append(string2)'),
+('What is the purpose of the "virtual" keyword in C#? (-) [Correct] Method can be overridden in derived classes (-) Method is sealed and cannot be overridden (-) Method is static and cannot be overridden (-) Method is abstract and must be overridden'),
+('What is the purpose of the "params" keyword in C#? (-) [Correct] Allows a variable number of arguments in a method (-) Specifies a class as a parameter (-) Indicates a property of a class (-) Declares a constant value'),
+('What is the difference between a class and a struct in C#? (-) [Correct] Class is reference type, struct is value type (-) Class is value type, struct is reference type (-) Class is mutable, struct is immutable (-) Class is stack-allocated, struct is heap-allocated'),
+('How to read input from the user in C#? (-) [Correct] Console.ReadLine() (-) Console.Read() (-) Console.Input() (-) Console.ReadKey()'),
+('What is the purpose of the "readonly" keyword in C#? (-) [Correct] Indicates that a field cannot be modified after initialization (-) Indicates that a method cannot be overridden (-) Indicates that a class cannot be inherited from (-) Indicates that a class cannot be instantiated'),
+('How to write output to the console in C#? (-) [Correct] Console.WriteLine() (-) Console.Write() (-) Console.Print() (-) Console.Output()'),
+('What is the purpose of the "abstract" keyword in C#? (-) [Correct] Declares a class as incomplete and requires inheritance (-) Declares a variable as constant (-) Declares a method as static (-) Declares a class as sealed'),
+('What is the purpose of the "base" keyword in C#? (-) [Correct] Refers to the base class (-) Refers to the derived class (-) Refers to a static member (-) Refers to an interface'),
+('How to convert an integer to a string in C#? (-) [Correct] stringValue = intValue.ToString(); (-) stringValue = Convert.ToString(intValue); (-) stringValue = intValue.ToString; (-) stringValue = intValue.ToString();'),
+('What is the purpose of the "delegate" keyword in C#? (-) [Correct] Defines a type that represents a method signature (-) Defines a constant value (-) Defines a variable with delegate type (-) Defines a generic type'),
+('How to sort an array in ascending order in C#? (-) [Correct] Array.Sort(arrayName) (-) Array.Reverse(arrayName) (-) Array.Sum(arrayName) (-) Array.Length(arrayName)'),
+('What is the purpose of the "using" statement in C#? (-) [Correct] Ensures proper resource disposal (-) Declares variable scope (-) Declares a class (-) Declares a constant value'),
+('How to check if a string contains a substring in C#? (-) [Correct] string1.Contains(substring) (-) string1.Equals(substring) (-) string1.IndexOf(substring) (-) string1.Length(substring)');
